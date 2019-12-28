@@ -1,7 +1,7 @@
 ### Coding Challenge
 
 Author : Sudeep Acharya\
-Date: 28 December 2019\
+Date: 28 December 2019
 
 #### Running the Application
 (Assuming that the php is installed in the machine)
