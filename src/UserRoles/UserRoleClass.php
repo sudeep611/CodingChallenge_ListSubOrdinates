@@ -9,10 +9,10 @@ class UserRoleClass
     private $subOrdinateParentTable = array();
     private $resultSubOrdinateArray = array();
 
-    function __construct()
+    function __construct($jsonDataFile)
     {
         // Get the contents of the JSON file
-        $data_sample = file_get_contents(__DIR__ . "/../files/data.json");
+        $data_sample = file_get_contents($jsonDataFile);
         // Convert to array and initialize to class variable
         $array_data_sample = json_decode($data_sample, true);
         $this->roleData = $array_data_sample["roles"];
@@ -33,13 +33,14 @@ class UserRoleClass
                 array_push($resultArray, $user);
             }
         }
-        echo json_encode($resultArray);
+        return json_encode($resultArray);
     }
 
     function setSubordinateParentTableArray() {
         foreach ($this->roleData as $role) {
             $this->subOrdinateParentTable[$role["Id"]] = $role["Parent"];
         }
+        print_r($this->subOrdinateParentTable);
     }
 
     function getRoleId($userId) {
