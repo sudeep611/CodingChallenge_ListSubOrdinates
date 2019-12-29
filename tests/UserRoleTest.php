@@ -23,20 +23,31 @@ final class UserRoleTest extends TestCase
     public function testSetSubordinateParentTableArray()
     {
         $actualClass = new UserRoleClass($this->sampleDataFile);
-        $this->assertEquals();
+        $actualClass->setSubordinateParentTableArray();
+        $this->assertEquals(
+            array (1 => 0, 2 => 1, 3 => 2, 4 => 3, 5 => 3),
+            $actualClass->subOrdinateParentTable
+        );
     }
 
-//    public function testGetRoleId()
-//    {
-//        $this->assertEquals(
-//            'Hello World',
-//            UserRoleClass::sayHelloWorld()
-//        );
-//    }
-//
-//    public function testRecursivelySearchSubOrdinateUserIds()
-//    {
-//
-//    }
+    public function testGetRoleId()
+    {
+        $actualClass = new UserRoleClass($this->sampleDataFile);
+        $this->assertEquals(
+            1,
+            $actualClass->getRoleId(1)
+        );
+    }
+
+    public function testRecursivelySearchSubOrdinateUserIds()
+    {
+        $actualClass = new UserRoleClass($this->sampleDataFile);
+        $actualClass->setSubordinateParentTableArray();
+        $actualClass->recursivelySearchSubOrdinateUserIds(3);
+        $this->assertEquals(
+            array (4, 5),
+            $actualClass->resultSubOrdinateArray
+        );
+    }
 
 }

@@ -6,10 +6,10 @@ class UserRoleClass
 {
     private $roleData;
     private $userData;
-    private $subOrdinateParentTable = array();
-    private $resultSubOrdinateArray = array();
+    public $subOrdinateParentTable = array();
+    public $resultSubOrdinateArray = array();
 
-    function __construct($jsonDataFile)
+    public function __construct($jsonDataFile)
     {
         // Get the contents of the JSON file
         $data_sample = file_get_contents($jsonDataFile);
@@ -19,7 +19,7 @@ class UserRoleClass
         $this->userData = $array_data_sample["users"];
     }
 
-    function getSubOrdinates($userId)
+    public function getSubOrdinates($userId)
     {
         // First of all let us make table of role hierarchy
         $this->setSubordinateParentTableArray();
@@ -36,14 +36,13 @@ class UserRoleClass
         return json_encode($resultArray);
     }
 
-    function setSubordinateParentTableArray() {
+    public function setSubordinateParentTableArray() {
         foreach ($this->roleData as $role) {
             $this->subOrdinateParentTable[$role["Id"]] = $role["Parent"];
         }
-        print_r($this->subOrdinateParentTable);
     }
 
-    function getRoleId($userId) {
+    public function getRoleId($userId) {
         foreach ($this->userData as $user) {
             if ($user["Id"] == $userId) {
                 return $user["Role"];
@@ -52,7 +51,7 @@ class UserRoleClass
         return -1;
     }
 
-    function recursivelySearchSubOrdinateUserIds($parentId) {
+    public function recursivelySearchSubOrdinateUserIds($parentId) {
         $tempArray = array_keys($this->subOrdinateParentTable, $parentId);
         if(sizeof($tempArray) > 0) {
             foreach ($tempArray as $temp) {
