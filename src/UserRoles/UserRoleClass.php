@@ -4,10 +4,10 @@ namespace UserRoles;
 
 class UserRoleClass
 {
-    private $roleData;
-    private $userData;
-    public $subOrdinateParentTable = array();
-    public $resultSubOrdinateArray = array();
+    private $roles;
+    private $users;
+    public $subOrdinateParentTable = [];
+    public $resultSubOrdinateArray = [];
 
     public function __construct($jsonDataFile)
     {
@@ -16,9 +16,9 @@ class UserRoleClass
         // Convert to array and initialize to class variable
         $array_data_sample = json_decode($data_sample, true);
         // Set the roles array
-        $this->roleData = $array_data_sample["roles"];
+        $this->roles = $array_data_sample["roles"];
         // Set the User Array
-        $this->userData = $array_data_sample["users"];
+        $this->users = $array_data_sample["users"];
     }
 
     /*
@@ -33,9 +33,9 @@ class UserRoleClass
         $this->recursivelySearchSubOrdinateUserIds($roleId);
 
         // Create variable to store the user information
-        $resultArray = array();
+        $resultArray = [];
         // Loop through user array and push the sub ordinate user to resultArray
-        foreach ($this->userData as $user) {
+        foreach ($this->users as $user) {
             // If the user have role that matches in result array
             if(in_array($user["Role"], $this->resultSubOrdinateArray)) {
                 array_push($resultArray, $user);
@@ -49,7 +49,7 @@ class UserRoleClass
      *  This function creates the role and the direct parent relationship table
      */
     public function setSubordinateParentTableArray() {
-        foreach ($this->roleData as $role) {
+        foreach ($this->roles as $role) {
             $this->subOrdinateParentTable[$role["Id"]] = $role["Parent"];
         }
     }
@@ -58,7 +58,7 @@ class UserRoleClass
      * When the user id of the user is provided this function returns the role of that user
      */
     public function getRoleId($userId) {
-        foreach ($this->userData as $user) {
+        foreach ($this->users as $user) {
             if ($user["Id"] == $userId) {
                 return $user["Role"];
             }

@@ -25,7 +25,7 @@ final class UserRoleTest extends TestCase
         $actualClass = new UserRoleClass($this->sampleDataFile);
         $actualClass->setSubordinateParentTableArray();
         $this->assertEquals(
-            array (1 => 0, 2 => 1, 3 => 2, 4 => 3, 5 => 3),
+            [1 => 0, 2 => 1, 3 => 2, 4 => 3, 5 => 3],
             $actualClass->subOrdinateParentTable
         );
     }
@@ -45,7 +45,7 @@ final class UserRoleTest extends TestCase
         $actualClass->setSubordinateParentTableArray();
         $actualClass->recursivelySearchSubOrdinateUserIds(3);
         $this->assertEquals(
-            array (4, 5),
+            [4, 5],
             $actualClass->resultSubOrdinateArray
         );
     }
