@@ -3,7 +3,7 @@
 // Autoload files using the Composer autoloader.
 require_once __DIR__ . '/vendor/autoload.php';
 
-use UserRoles\UserRoleClass;
+use UserRoles\UserRole;
 
-$entry = new UserRoleClass(__DIR__ . "/src/files/data.json");
+$entry = new UserRole(__DIR__ . "/src/files/data.json");
 echo($entry->getSubOrdinates(3));

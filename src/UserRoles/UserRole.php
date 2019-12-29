@@ -2,7 +2,7 @@
 
 namespace UserRoles;
 
-class UserRoleClass
+class UserRole
 {
     private $roles;
     private $users;
