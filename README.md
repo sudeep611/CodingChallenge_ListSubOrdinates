@@ -5,7 +5,7 @@ Date: 28 December 2019
 
 ### Running the Application
 (Assuming that the php is installed in the machine)\
-Navigate to the root folder and enter the following command\ 
+Navigate to the root folder and enter the following command
 ```
 $ composer install
 $ php -S localhost:4000

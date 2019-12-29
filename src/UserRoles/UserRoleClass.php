@@ -67,7 +67,7 @@ class UserRoleClass
     }
 
     /*
-     * This function finds the direct sub ordinates and their subordinates and return the user ids
+     * This function finds the direct sub ordinates and their subordinates and return their user ids
      */
     public function recursivelySearchSubOrdinateUserIds($parentId) {
         $tempArray = array_keys($this->subOrdinateParentTable, $parentId);
