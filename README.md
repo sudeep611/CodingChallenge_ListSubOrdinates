@@ -1,4 +1,4 @@
-Coding Challenge - Finding the Sub-Ordinates of Sub-Ordinates
+Coding Challenge - Listing the Sub Ordinates of User
 
 ## Coding Challenge Given Information
 For Role - There are id and name defined for each role along with their parent to whom they report to. \
@@ -66,7 +66,7 @@ For Users - Unique set of id, name and role are defined to Each users
 1. Input: userId (Unique id of the user) 
 1. Output: List of ALL user's subordinates (including their subordinate's subordinates)
 
-Example: In the above sample, if input as a user id is 3 the output should be:\
+Example: In the above sample, if input as a user id is 3 the output should be:
 ```
 [{"Id": 2,"Name": "Emily Employee","Role": 4}, {"Id": 3,"Name": "Sam Supervisor","Role": 3},
 {"Id": 4,"Name": "Mary Manager","Role": 2}, {"Id": 5, "Name": "Steve
@@ -81,7 +81,7 @@ Trainer","Role": 5}]
 
 ## Solution Breakdown
 
-First: Create a subordinate table containing role id and their respective parent id as follows: \
+First: Create a subordinate table containing role id and their respective parent id as follows: 
 
 For example in the above sample data, the role Supervisor with id 3 have a parent 2 which is Location Manager. 
 
@@ -105,9 +105,12 @@ Fourth: Return the data in the desired format.
 1. Use of recursive function in order to write shorter code and save memory space
 1. Followed PSR-12 standard in the code to make it globally acceptable and understood by other developers
 
+### Tools Used
+1. PHP Composer
+1. PHPUnit (For testing)
 
 ### Running the Application
-(Assuming that the php is installed in the machine)\
+(Assuming that the php is installed in the machine)
 
 1. Clone the project
 ```$ git clone https://github.com/sudeep611/CodingChallenge_ListSubOrdinates.git```
@@ -126,5 +129,5 @@ Fourth: Return the data in the desired format.
 (Assuming that the phpunit is installed in the machine)\
 ```$ phpunit --bootstrap vendor/autoload.php tests/UserRoleTest.php```
 
-### Contact 
-For any inquiry mailto sudeep611@gmail[.]com
+### If project grows bigger
+1. Database to be used for the data such as RDBMS rather than using the data in file format. 
