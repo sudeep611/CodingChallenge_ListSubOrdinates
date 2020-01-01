@@ -10,16 +10,16 @@ There are id and name defined for each role along with their parent to whom they
 ### Running the Application
 (Assuming that the php is installed in the machine)\
 
-Clone the project
+1. Clone the project
 ```$ git clone https://github.com/sudeep611/CodingChallenge_ListSubOrdinates.git```
 
-Navigate to directory
+1. Navigate to directory
 ```$ cd CodingChallenge_ListSubOrdinates```
 
-Install Composer in currrent directory
+1. Install Composer in currrent directory
 ```$ composer install```
 
-Run the PHP Server
+1. Run the PHP Server
 ```$ php -S localhost:4000```
 
 
