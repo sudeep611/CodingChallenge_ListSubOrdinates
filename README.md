@@ -1,17 +1,30 @@
-### Coding Challenge
+Coding Challenge - Finding the Sub-Ordinates of Sub-Ordinates
 
-Author : Sudeep Acharya\
-Date: 28 December 2019
+### Coding Challenge Description
+There are id and name defined for each role along with their parent to whom they report to.  
+
+### Assumptions
+1. Each role and user have their own unique ids
+1. A single role does not have multiple Parent to whom they report to
 
 ### Running the Application
 (Assuming that the php is installed in the machine)\
-Navigate to the root folder and enter the following command
-```
-$ composer install
-$ php -S localhost:4000
-```
+
+Clone the project
+```$ git clone https://github.com/sudeep611/CodingChallenge_ListSubOrdinates.git```
+
+Navigate to directory
+```$ cd CodingChallenge_ListSubOrdinates```
+
+Install Composer in currrent directory
+```$ composer install```
+
+Run the PHP Server
+```$ php -S localhost:4000```
+
+
 ### Running the test
-$ phpunit --bootstrap vendor/autoload.php tests/UserRoleTest.php 
+```$ phpunit --bootstrap vendor/autoload.php tests/UserRoleTest.php```
 
 ### Contact 
 For any inquiry mailto sudeep611@gmail[.]com
