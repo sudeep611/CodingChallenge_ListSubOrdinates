@@ -7,7 +7,15 @@ For Users - Unique set of id, name and role are defined to Each users
 The data sample for Role and Users is as follows:\
 
 ### Task
-TODO
+1. Input: userId (Unique id of the user) 
+1. Output: List of ALL user's subordinates (including their subordinate's subordinates)
+
+Example: In the above sample, if input as a user id is 3 the output should be:\
+```
+[{"Id": 2,"Name": "Emily Employee","Role": 4}, {"Id": 3,"Name": "Sam Supervisor","Role": 3},
+{"Id": 4,"Name": "Mary Manager","Role": 2}, {"Id": 5, "Name": "Steve
+Trainer","Role": 5}]
+```
 
 ### Assumptions
 1. Each role and user have their own unique ids
@@ -16,10 +24,11 @@ TODO
 1. Role id 1 with name "System Administrator" is the top level user and have to parent defined, hence it has parent as 0
 
 ## Solution Breakdown
-TODO
+1. 
 
+### Decisions and tradeoffs
 
-## Running the Application
+### Running the Application
 (Assuming that the php is installed in the machine)\
 
 1. Clone the project
@@ -36,7 +45,7 @@ TODO
 
 
 ### Running the test
-(Assuming that the php is installed in the machine)\
+(Assuming that the phpunit is installed in the machine)\
 ```$ phpunit --bootstrap vendor/autoload.php tests/UserRoleTest.php```
 
 ### Contact 
