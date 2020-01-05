@@ -4,10 +4,9 @@ namespace UserRoles;
 
 class UserRole
 {
-    private $roles;
-    private $users;
-    public $subOrdinateParentTable = [];
-    public $resultSubOrdinateArray = [];
+    private $roles = [];
+    private $users = [];
+    public $rolesSubordinates = [];
 
     public function __construct($jsonDataFile)
     {
@@ -26,32 +25,21 @@ class UserRole
      */
     public function getSubOrdinates($userId)
     {
-        // First of all let us make table of role hierarchy
-        $this->setSubordinateParentTableArray();
-        // Find the role of the User
-        $roleId = $this->getRoleId($userId);
-        $this->recursivelySearchSubOrdinateUserIds($roleId);
+        // Search for the users sub ordinates user ids
+        $this->recursivelySearchSubOrdinateRoleIds($this->getRoleId($userId));
 
         // Create variable to store the user information
         $resultArray = [];
+
         // Loop through user array and push the sub ordinate user to resultArray
         foreach ($this->users as $user) {
             // If the user have role that matches in result array
-            if(in_array($user["Role"], $this->resultSubOrdinateArray)) {
+            if(in_array($user["Role"], $this->rolesSubordinates)) {
                 array_push($resultArray, $user);
             }
         }
         // return the result in the json format
         return json_encode($resultArray);
-    }
-
-    /*
-     *  This function creates the role and the direct parent relationship table
-     */
-    public function setSubordinateParentTableArray() {
-        foreach ($this->roles as $role) {
-            $this->subOrdinateParentTable[$role["Id"]] = $role["Parent"];
-        }
     }
 
     /*
@@ -69,12 +57,13 @@ class UserRole
     /*
      * This function finds the direct sub ordinates and their subordinates and return their user ids
      */
-    public function recursivelySearchSubOrdinateUserIds($parentId) {
-        $tempArray = array_keys($this->subOrdinateParentTable, $parentId);
-        if(sizeof($tempArray) > 0) {
-            foreach ($tempArray as $temp) {
-                array_push($this->resultSubOrdinateArray, $temp);
-                $this->recursivelySearchSubOrdinateUserIds($temp);
+    public function recursivelySearchSubOrdinateRoleIds($roleId) {
+        foreach ($this->roles as $r) {
+            $currentRoleParentId = $r["Parent"];
+            $currentRoleId = $r["Id"];
+            if($currentRoleParentId == $roleId && !in_array($currentRoleId, $this->rolesSubordinates)) {
+                array_push($this->rolesSubordinates, $currentRoleId);
+                $this->recursivelySearchSubOrdinateRoleIds($currentRoleId);
             }
         }
     }
