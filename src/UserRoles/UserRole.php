@@ -21,7 +21,7 @@ class UserRole
         $this->recursivelySearchSubOrdinateRoleIds($this->getRoleId($userId));
         $resultArray = [];
         foreach ($this->users as $user) {
-            if(in_array($user["Role"], $this->rolesSubordinates)) {
+            if (in_array($user["Role"], $this->rolesSubordinates)) {
                 array_push($resultArray, $user);
             }
         }
@@ -43,7 +43,7 @@ class UserRole
         foreach ($this->roles as $r) {
             $currentRoleParentId = $r["Parent"];
             $currentRoleId = $r["Id"];
-            if($currentRoleParentId == $roleId && !in_array($currentRoleId, $this->rolesSubordinates)) {
+            if ($currentRoleParentId == $roleId && !in_array($currentRoleId, $this->rolesSubordinates)) {
                 array_push($this->rolesSubordinates, $currentRoleId);
                 $this->recursivelySearchSubOrdinateRoleIds($currentRoleId);
             }
