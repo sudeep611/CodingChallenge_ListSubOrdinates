@@ -1,6 +1,4 @@
 <?php
-
-// Autoload files using the Composer autoloader.
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use UserRoles\UserRole;
@@ -23,20 +21,14 @@ final class UserRoleTest extends TestCase
     public function testGetRoleId()
     {
         $actualClass = new UserRole($this->sampleDataFile);
-        $this->assertEquals(
-            1,
-            $actualClass->getRoleId(1)
-        );
+        $this->assertEquals(1, $actualClass->getRoleId(1));
     }
 
     public function testRecursivelySearchSubOrdinateRoleIds()
     {
         $actualClass = new UserRole($this->sampleDataFile);
         $actualClass->recursivelySearchSubOrdinateRoleIds(3);
-        $this->assertEquals(
-            [4, 5],
-            $actualClass->rolesSubordinates
-        );
+        $this->assertEquals([4, 5], $actualClass->rolesSubordinates);
     }
 
 }
