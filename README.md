@@ -4,7 +4,7 @@ We are given the list of Roles and Users containing following information in eac
 For Role: Id, Name and Parent\
 For Users: Id, Name and Role
 
-We have to the Users SubOrdinates and their SubOrdinates
+We have to find the Users SubOrdinates and their SubOrdinates
 
 ### Assumptions
 1. Each role and user have their own unique ids
