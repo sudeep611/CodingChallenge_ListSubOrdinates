@@ -40,9 +40,9 @@ class UserRole
 
     public function recursivelySearchSubOrdinateRoleIds($roleId)
     {
-        foreach ($this->roles as $r) {
-            $currentRoleParentId = $r["Parent"];
-            $currentRoleId = $r["Id"];
+        foreach ($this->roles as $role) {
+            $currentRoleParentId = $role["Parent"];
+            $currentRoleId = $role["Id"];
             if ($currentRoleParentId == $roleId && !in_array($currentRoleId, $this->rolesSubordinates)) {
                 array_push($this->rolesSubordinates, $currentRoleId);
                 $this->recursivelySearchSubOrdinateRoleIds($currentRoleId);
