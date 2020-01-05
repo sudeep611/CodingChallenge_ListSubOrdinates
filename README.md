@@ -1,8 +1,8 @@
-### Coding Challenge - Finding Sub Ordinates
+## Coding Challenge - Finding Sub Ordinates
 We are given the list of Roles and Users containing following information in each:
 
 For Role: Id, Name and Parent\
-For Users: Id, Name and Role\
+For Users: Id, Name and Role
 
 We have to the Users SubOrdinates and their SubOrdinates
 
@@ -12,7 +12,7 @@ We have to the Users SubOrdinates and their SubOrdinates
 1. Each user is assigned a single role
 1. Role id 1 with name "System Administrator" is the top level user and have to parent defined, hence it has parent as 0
 
-## Solution Breakdown
+### Solution Breakdown
 1. Get the RoleId of the User
 1. Find the Subordinates and their subordinates of the Role Recursively
 1. List the users with the Roles obtained from Step 2
